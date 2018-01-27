@@ -28,6 +28,11 @@
         this.ticker.Update();
 	}
 
+    public bool PushInstruction(System.Type type)
+    {
+        return this.PushInstruction(type, RoverController.CurrentTick + 1);
+    }
+
     public bool PushInstruction(System.Type type, int tick)
     {
         if (this.CanPushInstruction(tick))
@@ -35,13 +40,11 @@
             return false;
         }
 
-        return this.script.PushInstruction(type, tick);
-    }
+        RoverInstruction instruction = System.Activator.CreateInstance(type) as RoverInstruction;
 
-    public bool PushInstruction(RoverInstruction instruction, int tick)
-    {
-        if (this.CanPushInstruction(tick))
+        if (instruction == null)
         {
+            UnityEngine.Debug.LogError("Cannot create instance of " + type.Name);
             return false;
         }
 
