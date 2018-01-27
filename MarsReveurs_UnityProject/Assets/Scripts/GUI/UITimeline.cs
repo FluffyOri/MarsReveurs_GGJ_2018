@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UITimeline : MonoBehaviour
 {
     public int ActionCount = 10;
-    public int Spacing = 2;
+    public int LockCount = 3;
     public UIQueuedAction QueuedActionItemPrefab;
 
     public List<UIQueuedAction> QueuedActions = new List<UIQueuedAction>();
@@ -36,7 +36,7 @@ public class UITimeline : MonoBehaviour
             UIQueuedAction newAction = (UIQueuedAction)Instantiate(this.QueuedActionItemPrefab, this.transform);
             RectTransform rectTransform = newAction.GetComponent<RectTransform>();
             rectTransform.localScale = new Vector3(1, 1, 1);
-            rectTransform.anchoredPosition = new Vector2(0, (rectTransform.sizeDelta.y + this.Spacing) * i * -1);
+            rectTransform.anchoredPosition = new Vector2(0, rectTransform.sizeDelta.y * i * -1);
             this.QueuedActions.Add(newAction);
         } 
 	}

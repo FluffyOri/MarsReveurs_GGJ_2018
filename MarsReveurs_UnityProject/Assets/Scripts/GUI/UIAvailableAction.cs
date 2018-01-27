@@ -10,6 +10,8 @@ public class UIAvailableAction : MonoBehaviour, IBeginDragHandler, IDragHandler,
 
     public string ActionName;
     public bool DragOnSurfaces = true;
+    public GameObject DraggedItemPrefab;
+    public Image BackgroundImage;
     public Image ActionIcon;
 
     private GameObject m_DraggingIcon;
@@ -30,20 +32,15 @@ public class UIAvailableAction : MonoBehaviour, IBeginDragHandler, IDragHandler,
 
         // We have clicked something that can be dragged.
         // What we want to do is create an icon for this.
-        this.m_DraggingIcon = new GameObject("DraggedAction");
+        this.m_DraggingIcon = (GameObject)Instantiate(this.DraggedItemPrefab);
 
         this.m_DraggingIcon.transform.SetParent(canvas.transform, false);
         this.m_DraggingIcon.transform.SetAsLastSibling();
 
-        var image = this.m_DraggingIcon.AddComponent<Image>();
-        // The icon will be under the cursor.
-        // We want it to be ignored by the event system.
-        var group = this.m_DraggingIcon.AddComponent<CanvasGroup>();
-        group.blocksRaycasts = false;
+        UIDraggedItem draggedItem = this.m_DraggingIcon.GetComponent<UIDraggedItem>();
 
-        image.sprite = this.ActionIcon.sprite;
-        image.color = this.ActionIcon.color;
-        image.SetNativeSize();
+        draggedItem.Icon.sprite = this.ActionIcon.sprite;
+        draggedItem.Background.color = this.BackgroundImage.color;
 
         if (this.DragOnSurfaces)
         {
@@ -94,10 +91,9 @@ public class UIAvailableAction : MonoBehaviour, IBeginDragHandler, IDragHandler,
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.clickCount >= 2)
+        if (eventData.clickCount > 0 && eventData.clickCount % 2 > 0)
         {
             string actionName = "RoverInstruction_" + this.ActionName;
-            int tick = RoverController.CurrentTick + GuiManager.Instance.Timeline.ActionCount - 1;
             System.Type type = System.Type.GetType(actionName);
             RoverController.Instance.PushInstruction(type);
             GuiManager.Instance.Timeline.Dirty = true;
