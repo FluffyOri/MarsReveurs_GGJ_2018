@@ -597,8 +597,8 @@ Camera:
   m_BackGroundColor: {r: 0.47843137, g: 0.2784314, b: 0.24705882, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.495
-    y: -0.1
+    x: 0.4375
+    y: 0
     width: 1
     height: 1
   near clip plane: 0.3
@@ -1934,9 +1934,9 @@ Tilemap:
   - serializedVersion: 1
     m_DirtyIndex: 1
   - serializedVersion: 1
-    m_DirtyIndex: 1
+    m_DirtyIndex: 0
   - serializedVersion: 1
-    m_DirtyIndex: 2
+    m_DirtyIndex: 0
 --- !u!19719996 &2034338305
 TilemapCollider2D:
   m_ObjectHideFlags: 0
