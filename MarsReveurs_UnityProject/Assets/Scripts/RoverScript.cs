@@ -25,6 +25,24 @@
         return true;
     }
 
+    public bool PushInstructionOnFirstAvailalbleSlot(RoverInstruction instruction, int tick)
+    {
+        while(this.instructions[tick] != null)
+        {
+            if (tick >= this.instructions.Length)
+            {
+                UnityEngine.Debug.LogError("Rover script memory violation ^_^.");
+                return false;
+            }
+
+            tick++;
+        }
+
+        this.instructions[tick] = instruction;
+
+        return true;
+    }
+
     public void Tick(int tick)
     {
         if (tick >= this.instructions.Length)

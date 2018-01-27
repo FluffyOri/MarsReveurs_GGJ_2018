@@ -1,9 +1,7 @@
-﻿using System;
-
-public class RoverInstruction_RotateLeft : RoverInstruction
+﻿public class RoverInstruction_RotateLeft : RoverInstruction
 {
     public override void Execute()
     {
-        throw new NotImplementedException();
+        UnityEngine.Debug.Log("Rotate Left " + RoverController.CurrentTick);
     }
 }

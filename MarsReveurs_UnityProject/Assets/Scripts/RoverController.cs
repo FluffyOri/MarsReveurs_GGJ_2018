@@ -14,14 +14,17 @@
 
     private void Awake()
     {
-        RoverController.CurrentTick = 0;
         this.script = new RoverScript(this.maxTicks);
+        this.ticker = new Meteor.Core.Utils.Ticker(this.OnTick, this.tickRate);
     }
 
 	void Start ()
     {
-        this.ticker = new Meteor.Core.Utils.Ticker(this.OnTick, 1*this.tickRate);
-	}
+        RoverController.CurrentTick = 0;
+
+        this.PushInstruction(typeof(RoverInstruction_RotateLeft));
+        this.PushInstruction(typeof(RoverInstruction_RotateRight));
+    }
 
 	void Update ()
     {
@@ -30,7 +33,15 @@
 
     public bool PushInstruction(System.Type type)
     {
-        return this.PushInstruction(type, RoverController.CurrentTick + 1);
+        RoverInstruction instruction = System.Activator.CreateInstance(type) as RoverInstruction;
+
+        if (instruction == null)
+        {
+            UnityEngine.Debug.LogError("Cannot create instance of " + type.Name);
+            return false;
+        }
+
+        return this.script.PushInstructionOnFirstAvailalbleSlot(instruction, RoverController.CurrentTick);
     }
 
     public bool PushInstruction(System.Type type, int tick)
