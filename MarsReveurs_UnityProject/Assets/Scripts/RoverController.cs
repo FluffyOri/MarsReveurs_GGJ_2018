@@ -31,6 +31,11 @@
         this.ticker.Update();
 	}
 
+    public System.Collections.Generic.IEnumerable<RoverInstruction> EnumerateInstructions(int fromTick, int toTick)
+    {
+        return this.script.EnumerateInstructions(fromTick, toTick);
+    }
+
     public bool PushInstruction(System.Type type)
     {
         RoverInstruction instruction = System.Activator.CreateInstance(type) as RoverInstruction;

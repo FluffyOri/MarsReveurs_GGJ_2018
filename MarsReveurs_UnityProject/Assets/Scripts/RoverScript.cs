@@ -7,6 +7,19 @@
         this.instructions = new RoverInstruction[maxTicks];
     }
 
+    public System.Collections.Generic.IEnumerable<RoverInstruction> EnumerateInstructions(int fromTick, int toTick)
+    {
+        if (fromTick > toTick)
+        {
+            throw new System.ArgumentException();
+        }
+
+        for (int index = fromTick; index < toTick; ++index)
+        {
+            yield return this.instructions[index];
+        }
+    }
+
     public bool PushInstruction(RoverInstruction instruction, int tick)
     {
         if (tick >= this.instructions.Length)
