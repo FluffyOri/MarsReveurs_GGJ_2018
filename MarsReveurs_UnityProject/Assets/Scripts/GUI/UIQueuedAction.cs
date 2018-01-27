@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UIQueuedAction : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public Image Background;
+    public Image BackgroundImage;
     public Image ActionIcon;
     public Text ActionLabel;
     public Color HighlightColor = Color.yellow;
@@ -20,9 +20,9 @@ public class UIQueuedAction : MonoBehaviour, IDropHandler, IPointerEnterHandler,
 
     public void OnEnable()
     {
-        if (this.Background != null)
+        if (this.BackgroundImage != null)
         {
-            this.normalColor = this.Background.color;
+            this.normalColor = this.BackgroundImage.color;
         }
     }
 
@@ -37,14 +37,31 @@ public class UIQueuedAction : MonoBehaviour, IDropHandler, IPointerEnterHandler,
         if (action != null)
         {
             this.ActionIcon.overrideSprite = action.ActionIcon.sprite;
-            this.ActionIcon.color = action.ActionIcon.color;
+            this.ActionIcon.color = Color.white;
+            this.BackgroundImage.color = action.BackgroundImage.color;
+            this.normalColor = this.BackgroundImage.color;
             this.ActiveActionName = action.ActionName;
-            this.ActionLabel.text = this.ActiveActionName;
+
+            int index = GuiManager.Instance.Timeline.QueuedActions.FindIndex(match => match == this);
+            if (index == 0)
+            {
+                this.ActionLabel.text = "Processing...";
+            }
+            else if (index <= GuiManager.Instance.Timeline.LockCount)
+            {
+                this.ActionLabel.text = "Locked!";
+            }
+            else
+            {
+                this.ActionLabel.text = "Waiting...";
+            }
         }
         else
         {
             this.ActionIcon.sprite = null;
-            this.ActionIcon.color = Color.white;
+            this.ActionIcon.color = Color.clear;
+            this.BackgroundImage.color = Color.white;
+            this.normalColor = this.BackgroundImage.color;
             this.ActiveActionName = string.Empty;
             this.ActionLabel.text = string.Empty;
         }
@@ -52,7 +69,7 @@ public class UIQueuedAction : MonoBehaviour, IDropHandler, IPointerEnterHandler,
 
     public void OnDrop(PointerEventData data)
     {
-        this.Background.color = normalColor;
+        this.BackgroundImage.color = normalColor;
 
         UIAvailableAction action = this.GetDropUIAvailableAction(data);
         if (action != null)
@@ -66,15 +83,15 @@ public class UIQueuedAction : MonoBehaviour, IDropHandler, IPointerEnterHandler,
     public void OnPointerEnter(PointerEventData data)
     {
         UIAvailableAction action = this.GetDropUIAvailableAction(data);
-        if (action != null)
+        if (action != null && string.IsNullOrEmpty(this.ActiveActionName))
         {
-            this.Background.color = this.HighlightColor;
+            this.BackgroundImage.color = this.HighlightColor;
         }
     }
 
     public void OnPointerExit(PointerEventData data)
     {
-        this.Background.color = this.normalColor;
+        this.BackgroundImage.color = this.normalColor;
     }
 
     private UIAvailableAction GetDropUIAvailableAction(PointerEventData data)
