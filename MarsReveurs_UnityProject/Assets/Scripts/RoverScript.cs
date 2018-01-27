@@ -68,6 +68,7 @@
 
         if (this.instructions[tick] == null)
         {
+            this.rover.Nop();
             return;
         }
 
