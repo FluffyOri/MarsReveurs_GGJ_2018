@@ -34,3 +34,4 @@ sysinfo.txt
 *.unitypackage
 MarsReveurs_UnityProject/Library/
 MarsReveurs_UnityProject/Temp/
+.DS_Store
