@@ -99,7 +99,7 @@ public class UIAvailableAction : MonoBehaviour, IBeginDragHandler, IDragHandler,
             string actionName = "RoverInstruction_" + this.ActionName;
             int tick = RoverController.CurrentTick + GuiManager.Instance.Timeline.ActionCount - 1;
             System.Type type = System.Type.GetType(actionName);
-            RoverController.Instance.PushInstruction(type, tick);
+            RoverController.Instance.PushInstruction(type);
             GuiManager.Instance.Timeline.Dirty = true;
         }
     }
