@@ -54,7 +54,7 @@
             return false;
         }
 
-        return this.script.PushInstructionOnFirstAvailalbleSlot(instruction, RoverController.CurrentTick);
+        return this.script.PushInstructionAfterLast(instruction, RoverController.CurrentTick, 16);
     }
 
     public bool PushInstruction(System.Type type, int tick)
