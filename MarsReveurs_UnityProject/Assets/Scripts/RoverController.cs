@@ -1,13 +1,11 @@
-﻿using UnityEngine;
-
-public class RoverController : MonoBehaviour
+﻿public class RoverController : UnityEngine.MonoBehaviour
 {
     public static int CurrentTick;
 
-    [SerializeField]
+    [UnityEngine.SerializeField]
     private int tickRate = 1;
 
-    [SerializeField]
+    [UnityEngine.SerializeField]
     private int maxTicks = 1024;
 
     private RoverScript script;
@@ -32,7 +30,6 @@ public class RoverController : MonoBehaviour
 
     private void OnTick(double deltaTime)
     {
-        RoverController.CurrentTick++;
-        this.script.Tick();
+        this.script.Tick(RoverController.CurrentTick++);
     }
 }

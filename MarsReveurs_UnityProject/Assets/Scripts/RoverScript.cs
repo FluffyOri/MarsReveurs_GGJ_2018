@@ -7,8 +7,8 @@
         this.instructions = new RoverInstruction[maxTicks];
     }
 
-    public void Tick()
+    public void Tick(int tick)
     {
-        UnityEngine.Debug.Log("Script.Tick");
+        // UnityEngine.Debug.Log("Script.Tick " + tick);
     }
 }
