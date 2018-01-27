@@ -28,6 +28,36 @@
         this.ticker.Update();
 	}
 
+    public bool PushInstruction(System.Type type, int tick)
+    {
+        if (this.CanPushInstruction(tick))
+        {
+            return false;
+        }
+
+        return this.script.PushInstruction(type, tick);
+    }
+
+    public bool PushInstruction(RoverInstruction instruction, int tick)
+    {
+        if (this.CanPushInstruction(tick))
+        {
+            return false;
+        }
+
+        return this.script.PushInstruction(instruction, tick);
+    }
+
+    private bool CanPushInstruction(int tick)
+    {
+        if (tick <= RoverController.CurrentTick)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
     private void OnTick(double deltaTime)
     {
         this.script.Tick(RoverController.CurrentTick++);
