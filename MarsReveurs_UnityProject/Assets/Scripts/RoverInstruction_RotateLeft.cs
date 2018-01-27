@@ -1,7 +1,7 @@
 ﻿public class RoverInstruction_RotateLeft : RoverInstruction
 {
-    public override void Execute()
+    public override void Execute(IRoverInterface rover)
     {
-        UnityEngine.Debug.Log("Rotate Left " + RoverController.CurrentTick);
+        rover.Rotate(Direction.Left);
     }
 }

@@ -1,9 +1,11 @@
 ﻿public sealed class RoverScript
 {
+    private IRoverInterface rover;
     private RoverInstruction[] instructions;
 
-    public RoverScript(int maxTicks)
+    public RoverScript(IRoverInterface rover, int maxTicks)
     {
+        this.rover = rover;
         this.instructions = new RoverInstruction[maxTicks];
     }
 
@@ -66,9 +68,10 @@
 
         if (this.instructions[tick] == null)
         {
+            this.rover.Nop();
             return;
         }
 
-        this.instructions[tick].Execute();
+        this.instructions[tick].Execute(this.rover);
     }
 }

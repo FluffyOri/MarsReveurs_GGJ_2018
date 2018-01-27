@@ -3,18 +3,24 @@
     public static int CurrentTick;
 
     [UnityEngine.SerializeField]
-    private int tickRate = 1;
+    private double tickRate = 1d;
 
     [UnityEngine.SerializeField]
     private int maxTicks = 1024;
 
     private RoverScript script;
-
+    private IRoverInterface rover;
     private Meteor.Core.Utils.Ticker ticker;
 
     private void Awake()
     {
-        this.script = new RoverScript(this.maxTicks);
+        this.rover = UnityEngine.GameObject.FindObjectOfType<PlayerController>();
+        if (this.rover == null)
+        {
+            throw new System.NullReferenceException("IRoverInterface");
+        }
+
+        this.script = new RoverScript(this.rover, this.maxTicks);
         this.ticker = new Meteor.Core.Utils.Ticker(this.OnTick, this.tickRate);
     }
 
@@ -22,7 +28,9 @@
     {
         RoverController.CurrentTick = 0;
 
-        this.PushInstruction(typeof(RoverInstruction_RotateLeft));
+        this.PushInstruction(typeof(RoverInstruction_Nop));
+        this.PushInstruction(typeof(RoverInstruction_RotateRight));
+        this.PushInstruction(typeof(RoverInstruction_Nop));
         this.PushInstruction(typeof(RoverInstruction_RotateRight));
     }
 

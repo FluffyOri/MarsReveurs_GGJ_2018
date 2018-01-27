@@ -1,4 +1,4 @@
 ﻿public abstract class RoverInstruction
 {
-    public abstract void Execute();
+    public abstract void Execute(IRoverInterface rover);
 }
