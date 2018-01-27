@@ -9,9 +9,9 @@ namespace Meteor.Core.Utils
 
         private double lastTick = 0;
 
-        public Ticker(OnTickDelegate onTick, int tickRate)
+        public Ticker(OnTickDelegate onTick, double tickRate)
         {
-            if (tickRate <= 0)
+            if (tickRate <= 0d)
             {
                 throw new System.ArgumentOutOfRangeException("tickRate");
             }
@@ -22,7 +22,7 @@ namespace Meteor.Core.Utils
             }
 
             this.onTick = onTick;
-            this.duration = 1f / tickRate;
+            this.duration = 1d / tickRate;
 
             this.lastTick = (double)System.DateTime.Now.Ticks / (double)System.TimeSpan.TicksPerSecond;
         }

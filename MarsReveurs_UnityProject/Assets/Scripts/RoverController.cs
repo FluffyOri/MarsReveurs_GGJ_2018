@@ -3,7 +3,7 @@
     public static int CurrentTick;
 
     [UnityEngine.SerializeField]
-    private int tickRate = 1;
+    private double tickRate = 1d;
 
     [UnityEngine.SerializeField]
     private int maxTicks = 1024;
