@@ -27,11 +27,6 @@
 	void Start ()
     {
         RoverController.CurrentTick = 0;
-
-        this.PushInstruction(typeof(RoverInstruction_Nop));
-        this.PushInstruction(typeof(RoverInstruction_RotateRight));
-        this.PushInstruction(typeof(RoverInstruction_Nop));
-        this.PushInstruction(typeof(RoverInstruction_RotateRight));
     }
 
 	void Update ()
@@ -54,7 +49,7 @@
             return false;
         }
 
-        return this.script.PushInstructionOnFirstAvailalbleSlot(instruction, RoverController.CurrentTick);
+        return this.script.PushInstructionAfterLast(instruction, RoverController.CurrentTick, 16);
     }
 
     public bool PushInstruction(System.Type type, int tick)

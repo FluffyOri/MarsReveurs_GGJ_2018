@@ -40,20 +40,24 @@
         return true;
     }
 
-    public bool PushInstructionOnFirstAvailalbleSlot(RoverInstruction instruction, int tick)
+    public bool PushInstructionAfterLast(RoverInstruction instruction, int tick, int range)
     {
-        while(this.instructions[tick] != null)
+        if (tick + range >= this.instructions.Length)
         {
-            if (tick >= this.instructions.Length)
-            {
-                UnityEngine.Debug.LogError("Rover script memory violation ^_^.");
-                return false;
-            }
-
-            tick++;
+            UnityEngine.Debug.LogError("Rover script memory violation ^_^.");
+            return false;
         }
 
-        this.instructions[tick] = instruction;
+        int lastUsedIndex = tick - 1; // !!! >_<
+        for (int index = tick; index < tick + range; ++index)
+        {
+            if (this.instructions[index] != null)
+            {
+                lastUsedIndex = index;
+            }
+        }
+
+        this.instructions[lastUsedIndex + 1] = instruction;
 
         return true;
     }
