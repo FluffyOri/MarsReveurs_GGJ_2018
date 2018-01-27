@@ -1542,7 +1542,7 @@ Tilemap:
     e33: 1
   m_TileRefreshArray:
   - serializedVersion: 1
-    m_DirtyIndex: 5
+    m_DirtyIndex: 0
   - serializedVersion: 1
     m_DirtyIndex: 1
   - serializedVersion: 1
@@ -1780,3 +1780,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ff860fc15d54d4294e729f0f50682f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilemap: {fileID: 2034338304}
