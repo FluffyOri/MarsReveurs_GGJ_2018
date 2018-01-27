@@ -5,12 +5,33 @@
 
     public void Nop()
     {
-        UnityEngine.Debug.Log("Noping...");
+        this.MoveForward();
     }
 
     public void Rotate(Direction direction)
     {
-        UnityEngine.Debug.Log("Rotating to " + direction + "...");
+        switch (direction)
+        {
+            case Direction.Left:
+                this.transform.Rotate(new UnityEngine.Vector3(0, 0, 1), 90f);
+                break;
+
+            case Direction.Right:
+                this.transform.Rotate(new UnityEngine.Vector3(0, 0, 1), -90f);
+                break;
+
+            case Direction.Back:
+            case Direction.Front:
+                throw new System.InvalidOperationException(direction.ToString());
+
+            default:
+                throw new System.ArgumentOutOfRangeException(direction.ToString());
+        }
+    }
+
+    public void MoveForward()
+    {
+        this.transform.position += this.transform.up;
     }
 
     void Start ()
@@ -20,21 +41,17 @@
 	void Update ()
     {
 #if UNITY_EDITOR
-        if (UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.UpArrow))
+        if (UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.LeftArrow))
         {
-            this.transform.position += UnityEngine.Vector3.up;
-        }
-        else if (UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.DownArrow))
-        {
-            this.transform.position += UnityEngine.Vector3.down;
-        }
-        else if (UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.LeftArrow))
-        {
-            this.transform.position += UnityEngine.Vector3.left;
+            this.transform.Rotate(new UnityEngine.Vector3(0, 0, 1), 90f);
         }
         else if (UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.RightArrow))
         {
-            this.transform.position += UnityEngine.Vector3.right;
+            this.transform.Rotate(new UnityEngine.Vector3(0, 0, 1), -90f);
+        }
+        else if (UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.UpArrow))
+        {
+            this.transform.position += this.transform.up;
         }
 #endif
     }

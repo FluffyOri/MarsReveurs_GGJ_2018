@@ -28,7 +28,9 @@
     {
         RoverController.CurrentTick = 0;
 
-        this.PushInstruction(typeof(RoverInstruction_RotateLeft));
+        this.PushInstruction(typeof(RoverInstruction_Nop));
+        this.PushInstruction(typeof(RoverInstruction_RotateRight));
+        this.PushInstruction(typeof(RoverInstruction_Nop));
         this.PushInstruction(typeof(RoverInstruction_RotateRight));
     }
 
