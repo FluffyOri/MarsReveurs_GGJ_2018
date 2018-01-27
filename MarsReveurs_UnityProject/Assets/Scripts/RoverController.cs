@@ -9,12 +9,18 @@
     private int maxTicks = 1024;
 
     private RoverScript script;
-
+    private IRoverInterface rover;
     private Meteor.Core.Utils.Ticker ticker;
 
     private void Awake()
     {
-        this.script = new RoverScript(this.maxTicks);
+        this.rover = UnityEngine.GameObject.FindObjectOfType<PlayerController>();
+        if (this.rover == null)
+        {
+            throw new System.NullReferenceException("IRoverInterface");
+        }
+
+        this.script = new RoverScript(this.rover, this.maxTicks);
         this.ticker = new Meteor.Core.Utils.Ticker(this.OnTick, this.tickRate);
     }
 
