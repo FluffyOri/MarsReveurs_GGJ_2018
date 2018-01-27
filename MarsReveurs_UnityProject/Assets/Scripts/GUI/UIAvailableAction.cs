@@ -4,9 +4,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Image))]
-public class UIAvailableAction : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class UIAvailableAction : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
-    public static string ActionIconsPath = "ActionIcons/";
+    public static string ActionIconsPathPrefix = "ActionIcons/action";
 
     public string ActionName;
     public bool DragOnSurfaces = true;
@@ -17,8 +17,7 @@ public class UIAvailableAction : MonoBehaviour, IBeginDragHandler, IDragHandler,
 
     public void Start()
     {
-        this.ActionIcon.sprite = Resources.Load<Sprite>(ActionIconsPath + this.ActionName);
-        Debug.Log(ActionIconsPath + this.ActionName);
+        this.ActionIcon.sprite = Resources.Load<Sprite>(ActionIconsPathPrefix + this.ActionName);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -91,5 +90,17 @@ public class UIAvailableAction : MonoBehaviour, IBeginDragHandler, IDragHandler,
         }
 
         this.m_DraggingIcon = null;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.clickCount >= 2)
+        {
+            string actionName = "RoverInstruction_" + this.ActionName;
+            int tick = RoverController.CurrentTick + GuiManager.Instance.Timeline.ActionCount - 1;
+            System.Type type = System.Type.GetType(actionName);
+            RoverController.Instance.PushInstruction(type, tick);
+            GuiManager.Instance.Timeline.Dirty = true;
+        }
     }
 }

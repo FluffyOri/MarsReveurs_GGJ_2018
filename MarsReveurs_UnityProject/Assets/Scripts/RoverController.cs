@@ -1,4 +1,4 @@
-﻿public class RoverController : UnityEngine.MonoBehaviour
+﻿public class RoverController : Singleton<RoverController>
 {
     public static int CurrentTick;
 
@@ -50,8 +50,8 @@
     }
 
     public bool PushInstruction(System.Type type, int tick)
-    {
-        if (this.CanPushInstruction(tick))
+    {     
+        if (!this.CanPushInstruction(tick))
         {
             return false;
         }

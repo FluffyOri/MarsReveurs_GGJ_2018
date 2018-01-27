@@ -26,6 +26,30 @@ public class UIQueuedAction : MonoBehaviour, IDropHandler, IPointerEnterHandler,
         }
     }
 
+    public void Refresh(RoverInstruction instruction)
+    {
+        UIAvailableAction action = GuiManager.Instance.AvailableActionsPanel.GetAction(instruction);
+        this.Refresh(action);
+    }
+
+    public void Refresh(UIAvailableAction action)
+    {
+        if (action != null)
+        {
+            this.ActionIcon.overrideSprite = action.ActionIcon.sprite;
+            this.ActionIcon.color = action.ActionIcon.color;
+            this.ActiveActionName = action.ActionName;
+            this.ActionLabel.text = this.ActiveActionName;
+        }
+        else
+        {
+            this.ActionIcon.sprite = null;
+            this.ActionIcon.color = Color.white;
+            this.ActiveActionName = string.Empty;
+            this.ActionLabel.text = string.Empty;
+        }
+    }
+
     public void OnDrop(PointerEventData data)
     {
         this.Background.color = normalColor;
@@ -33,10 +57,9 @@ public class UIQueuedAction : MonoBehaviour, IDropHandler, IPointerEnterHandler,
         UIAvailableAction action = this.GetDropUIAvailableAction(data);
         if (action != null)
         {
-            this.ActionIcon.overrideSprite = action.ActionIcon.sprite;
-            this.ActionIcon.color = action.ActionIcon.color;
-            this.ActiveActionName = action.ActionName;
-            this.ActionLabel.text = this.ActiveActionName;
+            int index = GuiManager.Instance.Timeline.QueuedActions.FindIndex(match => match == this);
+            RoverController.Instance.PushInstruction(System.Type.GetType("RoverInstruction_" + action.ActionName), RoverController.CurrentTick + index);
+            GuiManager.Instance.Timeline.Dirty = true;
         }
     }
 
