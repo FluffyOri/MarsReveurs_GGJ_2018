@@ -1,5 +1,9 @@
-﻿public class PlayerController : UnityEngine.MonoBehaviour, IRoverInterface
+﻿using UnityEngine;
+
+public class PlayerController : UnityEngine.MonoBehaviour, IRoverInterface
 {
+	public Transform Camera;
+
     [UnityEngine.SerializeField]
     private UnityEngine.Tilemaps.Tilemap tilemap;
 
@@ -40,6 +44,8 @@
 	
 	void Update ()
     {
+		this.Camera.position = new Vector3 (this.transform.position.x, this.transform.position.y, this.Camera.position.z);
+
 #if UNITY_EDITOR
         if (UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.LeftArrow))
         {
