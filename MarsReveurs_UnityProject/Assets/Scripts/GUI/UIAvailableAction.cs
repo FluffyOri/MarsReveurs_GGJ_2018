@@ -9,6 +9,7 @@ public class UIAvailableAction : MonoBehaviour, IBeginDragHandler, IDragHandler,
     public static string ActionIconsPathPrefix = "ActionIcons/action";
 
     public string ActionName;
+    public string LocalizedTitle;
     public bool DragOnSurfaces = true;
     public GameObject DraggedItemPrefab;
     public Image BackgroundImage;
