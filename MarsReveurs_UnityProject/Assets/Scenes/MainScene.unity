@@ -1552,115 +1552,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -16, y: -16}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1680547589
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1680547591}
-  - component: {fileID: 1680547590}
-  m_Layer: 0
-  m_Name: Music 1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!82 &1680547590
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1680547589}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 58487aa30e8a27240a67453bad79ccfa, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
---- !u!4 &1680547591
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1680547589}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1938557926
 GameObject:
   m_ObjectHideFlags: 0
@@ -2270,7 +2161,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 21300000, guid: 89c1641f88d244a4986013453050609d, type: 3}
       - {fileID: 21300000, guid: 6c20b208320254a3d8cee57682b6d197, type: 3}
-      m_AnimationSpeed: 9.813837
+      m_AnimationSpeed: 6.070716
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 1, y: 11, z: 0}
@@ -2278,7 +2169,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 21300000, guid: e5b3dbe85b79d438d899da2260c363d1, type: 3}
       - {fileID: 21300000, guid: 0aaa20b049a034b71b65986e8c84f51a, type: 3}
-      m_AnimationSpeed: 8.626129
+      m_AnimationSpeed: 6.074436
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 1, y: 16, z: 0}
@@ -2286,7 +2177,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 21300000, guid: 89c1641f88d244a4986013453050609d, type: 3}
       - {fileID: 21300000, guid: 6c20b208320254a3d8cee57682b6d197, type: 3}
-      m_AnimationSpeed: 7.212928
+      m_AnimationSpeed: 7.9798155
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 2, y: 16, z: 0}
@@ -2294,7 +2185,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 21300000, guid: 89c1641f88d244a4986013453050609d, type: 3}
       - {fileID: 21300000, guid: 6c20b208320254a3d8cee57682b6d197, type: 3}
-      m_AnimationSpeed: 6.4253273
+      m_AnimationSpeed: 8.459182
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -3, y: 17, z: 0}
@@ -2302,7 +2193,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 21300000, guid: a26212433259d42a4aceeafdfbbbc7a4, type: 3}
       - {fileID: 21300000, guid: 88fcd31d186914bbf93cced3f7189204, type: 3}
-      m_AnimationSpeed: 9.255608
+      m_AnimationSpeed: 9.721306
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -2448,7 +2339,7 @@ TilemapCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2572,7 +2463,7 @@ Transform:
   - {fileID: 1254447143}
   - {fileID: 1481361958}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2137300059
 GameObject:
@@ -2585,6 +2476,7 @@ GameObject:
   - component: {fileID: 2137300061}
   - component: {fileID: 2137300060}
   - component: {fileID: 2137300063}
+  - component: {fileID: 2137300064}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -2687,3 +2579,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 1077892675}
   tilemap: {fileID: 2034338304}
+--- !u!50 &2137300064
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2137300059}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
