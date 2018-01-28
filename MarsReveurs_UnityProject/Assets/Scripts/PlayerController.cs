@@ -31,6 +31,8 @@ public class PlayerController : UnityEngine.MonoBehaviour, IRoverInterface
             default:
                 throw new System.ArgumentOutOfRangeException(direction.ToString());
         }
+
+        SoundPlayer.Instance.PostEvent(SoundEvent.Rotate);
     }
 
     public void MoveForward()
@@ -49,15 +51,15 @@ public class PlayerController : UnityEngine.MonoBehaviour, IRoverInterface
 #if UNITY_EDITOR
         if (UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.LeftArrow))
         {
-            this.transform.Rotate(new UnityEngine.Vector3(0, 0, 1), 90f);
+            this.Rotate(Direction.Left);
         }
         else if (UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.RightArrow))
         {
-            this.transform.Rotate(new UnityEngine.Vector3(0, 0, 1), -90f);
+            this.Rotate(Direction.Right);
         }
         else if (UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.UpArrow))
         {
-            this.transform.position += this.transform.up;
+            this.MoveForward();
         }
 #endif
     }
