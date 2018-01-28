@@ -49,7 +49,7 @@
             return false;
         }
 
-        return this.script.PushInstructionAfterLast(instruction, RoverController.CurrentTick + 3, 16);
+        return this.script.PushInstructionAfterLast(instruction, RoverController.CurrentTick + 4, 16);
     }
 
     public bool PushInstruction(System.Type type, int tick)
@@ -72,7 +72,7 @@
 
     private bool CanPushInstruction(int tick)
     {
-        if (tick < RoverController.CurrentTick + 3)
+        if (tick < RoverController.CurrentTick + 4)
         {
             return false;
         }
