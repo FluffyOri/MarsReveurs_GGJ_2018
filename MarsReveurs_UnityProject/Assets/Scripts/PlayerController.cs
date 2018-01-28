@@ -61,6 +61,8 @@ public class PlayerController : UnityEngine.MonoBehaviour, IRoverInterface
 
         this.Energy = UnityEngine.Mathf.Clamp01(this.Energy - energyLoss);
 
+        SoundPlayer.Instance.PostEvent(SoundEvent.EnergyLoss);
+
         if (UnityEngine.Mathf.Abs(this.Energy) < float.Epsilon)
         {
             this.Die(DeathReason.ZeroEnergy);
@@ -70,6 +72,8 @@ public class PlayerController : UnityEngine.MonoBehaviour, IRoverInterface
     public void Die(DeathReason reason = DeathReason.YouDeserveIt)
     {
         this.Energy = 0f;
+
+        SoundPlayer.Instance.PostEvent(SoundEvent.Death);
 
         UnityEngine.Debug.Log("You died because " + reason);
     }
@@ -103,6 +107,6 @@ public class PlayerController : UnityEngine.MonoBehaviour, IRoverInterface
 
     void OnTriggerEnter2D(UnityEngine.Collider2D coll)
     {
-        this.SlapTheCuteRover(.1f);
+        this.SlapTheCuteRover(.20001f);
     }
 }
