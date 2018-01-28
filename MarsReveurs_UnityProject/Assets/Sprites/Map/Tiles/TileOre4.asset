@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a63cee5c9897dbb40b56655bf39b5a1d, type: 3}
+  m_Name: TileOre4
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: 21300000, guid: a26212433259d42a4aceeafdfbbbc7a4, type: 3}
+  - {fileID: 21300000, guid: 88fcd31d186914bbf93cced3f7189204, type: 3}
+  m_MinSpeed: 6
+  m_MaxSpeed: 10
+  m_AnimationStartTime: 0
+  m_TileColliderType: 2
